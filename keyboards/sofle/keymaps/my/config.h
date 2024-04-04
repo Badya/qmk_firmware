@@ -38,6 +38,7 @@
     #define TAPPING_TERM 200
 #endif
 // #define ENCODER_DIRECTION_FLIP
+#define ENCODER_RESOLUTION 4
 
 
 #define RGBLIGHT_SLEEP
