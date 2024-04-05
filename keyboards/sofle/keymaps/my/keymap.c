@@ -377,47 +377,37 @@ static void render_nerv_logo(void) {
 
 static void print_status_narrow(void) {
     // Print current mode
-    oled_write_P(PSTR("\n\n"), false);
+    oled_set_cursor(0, 0);
     oled_write_ln_P(PSTR(VERSION), false);
 
-    oled_write_ln_P(PSTR(""), false);
-
-	//snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state)
-
-
-    switch (get_highest_layer(default_layer_state)) {
-        case _QWERTY:
-            oled_write_ln_P(PSTR("Qwrt"), false);
-            break;
-
-        default:
-            oled_write_ln_P(PSTR("Undef"), false);
-    }
-    oled_write_P(PSTR("\n\n"), false);
+    oled_set_cursor(0, 2);
     // Print current layer
-    oled_write_ln_P(PSTR("LAYER"), false);
+    oled_write_ln_P(PSTR("-----"), false);
+    oled_set_cursor(0, 3);
     switch (get_highest_layer(layer_state)) {
         case _QWERTY:
-            oled_write_P(PSTR("Base\n"), false);
+            oled_write_ln_P(PSTR(" BAS "), false);
             break;
         case _RAISE:
-            oled_write_P(PSTR("Raise"), false);
+            oled_write_ln_P(PSTR(" RAI "), false);
             break;
         case _LOWER:
-            oled_write_P(PSTR("Lower"), false);
+            oled_write_ln_P(PSTR(" LOW "), false);
             break;
         case _ADJUST:
-            oled_write_P(PSTR("Adj\n"), false);
+            oled_write_ln_P(PSTR(" ADJ "), false);
             break;
         case _NUMPAD:
-            oled_write_P(PSTR("Nump\n"), false);
+            oled_write_ln_P(PSTR(" NUM "), false);
             break;
         case _SWITCH:
-            oled_write_P(PSTR("Swit\n"), false);
+            oled_write_ln_P(PSTR(" SWT "), false);
             break;
         default:
-            oled_write_ln_P(PSTR("Undef"), false);
+            oled_write_ln_P(PSTR("UNDEF"), false);
     }
+    oled_set_cursor(0, 4);
+    oled_write_ln_P(PSTR("-----"), false);
 }
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
