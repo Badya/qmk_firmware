@@ -1,4 +1,3 @@
-
  /* Copyright 2021 Dane Evans
   *
   * This program is free software: you can redistribute it and/or modify
@@ -123,7 +122,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * | trans|      |      |      |      |      |-------|    |-------|   -  |   =  |   [  |   ]  |   \  | trans|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      | trans| trans|      | /trans  /       \trans \  |      | trans| trans| trans|
+ *            |      | trans| trans| trans| /trans  /       \trans \  | trans| trans| trans| trans|
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
@@ -137,7 +136,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
   _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,  _______, KC_MINS, KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS, _______,
   //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-                 XXXXXXX, _______, _______, XXXXXXX, _______,     _______, XXXXXXX, _______, _______, _______
+                 XXXXXXX, _______, _______, _______, _______,     _______, _______, _______, _______, _______
   //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
 ),
 
@@ -151,12 +150,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * | trans| Undo |  Cut | Copy | Paste|      |-------|    |-------| Home | PDwn | PUp  | End  |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      | trans| trans|      | /trans  /       \trans \  |      | trans| trans| trans|
+ *            |      | trans| trans| trans| /trans  /       \trans \  | trans| trans| trans| trans|
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
 [_RAISE] = LAYOUT(
-  //,------------------------------------------------.                    ,---------------------------------------------------.
+  //,------------------------------------------------.                   ,---------------------------------------------------.
   _______,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,
   //|------+-------+--------+--------+--------+------|                   |--------+-------+--------+--------+--------+---------|
   XXXXXXX,  KC_INS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -165,17 +164,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
   _______, G(KC_Z), G(KC_X), G(KC_C), G(KC_V), XXXXXXX,_______,   _______,KC_HOME, KC_PGDN, KC_PGUP,  KC_END, XXXXXXX, XXXXXXX,
   //|------+-------+--------+--------+--------+------|  ===  |   |  ===  |--------+-------+--------+--------+--------+---------|
-                 XXXXXXX, _______, _______, XXXXXXX, _______,     _______, XXXXXXX, _______, _______, _______
+                 XXXXXXX, _______, _______, _______, _______,     _______, _______, _______, _______, _______
   //            \--------+--------+--------+---------+-------|   |--------+---------+--------+---------+-------/
 ),
 
 /* ADJUST
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |EE_CLR|      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | QK_BOOT|      |      |      |      |      |                    |      |      |      |      |      |      |
+ * |QK_BOOT|     |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |RGB_TOG|hue^ |sat ^ | bri ^|      |      |-------.   ,-------|desk <|      |      |desk >|      |      |
+ * |RGB_TOG| hue^| sat ^| bri ^|      |      |-------.    ,-------|desk <|      |      |desk >|      |      |
  * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
  * | mode | hue dn|sat d|bri dn|      |QWERTY|-------|    |-------|      | PREV | PLAY | NEXT |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
@@ -337,9 +336,9 @@ void keyboard_post_init_user(void) {
 #ifdef OLED_ENABLE
 // Resolution: 128 x 32
 
-static void render_logo(void) {
+static void render_nerv_logo(void) {
      // 'OLED_NERV', 32x128px
-    static const char PROGMEM qmk_logo[] = {
+    static const char PROGMEM nerv_logo[] = {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x1c, 0x30, 0x60, 0xc0, 0x80, 0xc0, 0xf8, 0xfc, 0xfc,
 0xfe, 0xfe, 0xfe, 0xfe, 0xfc, 0xfc, 0xdc, 0xc8, 0xc0, 0x80, 0x80, 0x80, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x04, 0xfc, 0x1c, 0x30, 0x60, 0xc4, 0xfc, 0x00, 0x04, 0xfc, 0xfd, 0x27, 0x77, 0x1f, 0x1f,
@@ -373,8 +372,7 @@ static void render_logo(void) {
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
     };
-    oled_write_raw_P(qmk_logo, sizeof(qmk_logo));
-    // oled_write_P(qmk_logo, false);
+    oled_write_raw_P(nerv_logo, sizeof(nerv_logo));
 }
 
 static void print_status_narrow(void) {
@@ -430,7 +428,7 @@ bool oled_task_user(void) {
     if (is_keyboard_master()) {
         print_status_narrow();
     } else {
-        render_logo();
+        render_nerv_logo();
     }
     return false;
 }
@@ -484,10 +482,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
-        if (clockwise) {
-            tap_code(KC_VOLU);
-        } else {
-            tap_code(KC_VOLD);
+        switch (get_highest_layer(layer_state)) {
+            case _QWERTY:
+                if (clockwise) {
+                    tap_code(KC_VOLU);
+                } else {
+                    tap_code(KC_VOLD);
+                }
+                break;
+            case _RAISE:
+            case _LOWER:
+                if (clockwise) {
+                    tap_code(KC_MNXT);
+                } else {
+                    tap_code(KC_MPRV);
+                }
+                break;
         }
 	} else if (index == 1) {
 		switch (get_highest_layer(layer_state)) {
