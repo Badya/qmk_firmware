@@ -14,6 +14,7 @@
   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
   */
   // SOFLE RGB
+// TODO: see docs/feature_os_detection.md
 #include <stdio.h>
 
 #include QMK_KEYBOARD_H
@@ -493,24 +494,24 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 		switch (get_highest_layer(layer_state)) {
 			case _QWERTY:
 				if (clockwise) {
-                    tap_code(KC_PGDN);
+                    tap_code(KC_WH_U);
                 } else {
-                    tap_code(KC_PGUP);
+                    tap_code(KC_WH_D);
                 }
                 break;
             case _RAISE:
             case _LOWER:
                 if (clockwise) {
-                    tap_code(KC_DOWN);
+                    tap_code(KC_PGDN);
                 } else {
-                    tap_code(KC_UP);
+                    tap_code(KC_PGUP);
                 }
                 break;
             default:
                 if (clockwise) {
-                    tap_code(KC_WH_D);
-                } else {
                     tap_code(KC_WH_U);
+                } else {
+                    tap_code(KC_WH_D);
                 }
                 break;
 		}
